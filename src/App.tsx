@@ -1,8 +1,9 @@
 import './App.css';
 import Header from './components/Header/Header';
-import { BrowserRouter as Router } from 'react-router-dom' ;
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom' ;
 import Homepage from './components/Homepage/Homepage';
 import { createTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import Emploi from './components/Emploi/Emploi';
 
 const theme = createTheme({
   palette: {
@@ -21,7 +22,10 @@ function App() {
       <div className="App">
         <Router>
           <Header/>
-          <Homepage/>
+          <Switch>
+            <Route path="/" exact={true}><Homepage /></Route>
+            <Route path="/emploi"><Emploi /></Route>
+          </Switch>
         </Router>
       </div>
     </MuiThemeProvider>

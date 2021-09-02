@@ -20,3 +20,12 @@ code {
   --dark: #4a2c40 ;
   --grey: rgb(54, 54, 54) ;
 }
+
+a{
+  text-decoration: none;
+  color: var(--accent) ;
+}
+
+header a{
+  color: #fff ;
+}

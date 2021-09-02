@@ -8,6 +8,8 @@ const useStyles = makeStyles(() => ({
         backgroundColor: "primary",
         paddingRight: "79px",
         paddingLeft: "118px",
+        position: "sticky",
+        marginBottom: "20px",
         "@media (max-width: 900px)": {
             paddingLeft: 0,
         }
@@ -122,7 +124,7 @@ export default function Header() {
 
     const logoComp = (
         <Typography className={logo} variant="h6" component="h1">
-            PortalJob
+            <RouterLink to="/">E-Kandra</RouterLink>
         </Typography>
     );
 
@@ -163,8 +165,6 @@ export default function Header() {
     };
 
     return (
-        <header>
         <AppBar className={header}>{mobileView ? displayMobile() : displayDesktop()}</AppBar>
-        </header>
     );
 }
