@@ -9,7 +9,6 @@ const useStyles = makeStyles(() => ({
         paddingRight: "79px",
         paddingLeft: "118px",
         position: "sticky",
-        marginBottom: "20px",
         "@media (max-width: 900px)": {
             paddingLeft: 0,
         }

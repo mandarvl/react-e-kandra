@@ -1,9 +1,9 @@
 import './App.css';
-import Header from './components/Header/Header';
+import Header from './components/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom' ;
-import Homepage from './components/Homepage/Homepage';
+import Homepage from './components/Homepage';
 import { createTheme, MuiThemeProvider } from '@material-ui/core/styles'
-import Emploi from './components/Emploi/Emploi';
+import Emploi from './components/Emploi';
 
 const theme = createTheme({
   palette: {

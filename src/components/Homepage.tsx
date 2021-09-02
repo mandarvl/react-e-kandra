@@ -1,13 +1,10 @@
-import { Box, Button, Checkbox, FormControlLabel, makeStyles, TextField } from "@material-ui/core";
+import { Box, Button, Checkbox, FormControlLabel, Paper, Grid, makeStyles, TextField } from "@material-ui/core";
 import React from "react";
-import coverImg from '../../assets/images/cover-home.jpg' ;
+import coverImg from '../assets/images/cover-home.jpg' ;
 
 const useStyles = makeStyles(() => ({
     mainContainer: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "180px",
+        padding: "160px",
         width: "100%",
         backgroundImage: "url("+coverImg+")",
         backgroundSize: "cover",
@@ -18,7 +15,11 @@ const useStyles = makeStyles(() => ({
         width: "100%"
     },
     searchForm: {
-        marginTop: "25px"
+        marginTop: "25px",
+        "& .MuiGrid-item *": {
+            width: "100%",
+            height: "100%"
+        }
     }
 })) ;
 
@@ -26,8 +27,14 @@ export default function Homepage() {
     const { mainContainer, searchBox,searchForm } = useStyles() ;
     return (
         <div>
-            <div className={mainContainer}>
-                <div className={searchBox}>
+            <Grid 
+                container 
+                className={mainContainer}
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <Paper className={searchBox}>
                     <Box p={10}>
                         <h3>Rechercher un emploi</h3>
                         <form className={searchForm }>
@@ -36,23 +43,30 @@ export default function Homepage() {
                                 <FormControlLabel control={<Checkbox name="checkedCDD" />} label="CDD" />
                                 <FormControlLabel control={<Checkbox name="checkedStage" />} label="Stage" />
                             </div>
-                            <div className="flex-container stretch">
-                                <div className="flex-item flex-grow">
+                            <Grid 
+                                container 
+                                direction="row"
+                                spacing={2}
+                                justify-content="flex-start"
+                                alignItems="stretch"
+                                style={{marginTop: "10px"}}
+                            >
+                                <Grid item xs>
                                     <TextField label="Quel emploi recherchez-vous?" variant="filled" />
-                                </div>
-                                <div className="flex-item flex-grow">
+                                </Grid>
+                                <Grid item xs>
                                     <TextField label="Où?" variant="filled" />
-                                </div>
-                                <div className="flex-item">
+                                </Grid>
+                                <Grid item xs={2}>
                                     <Button variant="contained" color="secondary">
                                         Rechercher
                                     </Button>
-                                </div>
-                            </div>
+                                </Grid>
+                            </Grid>
                         </form>
                     </Box>
-                </div>
-            </div>
+                </Paper>
+            </Grid>
         </div>
     ) ;
 }
