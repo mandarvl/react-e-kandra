@@ -1,5 +1,5 @@
 class EmploiService {
-    listeEmplois: any ;
+    listeEmplois: any[] ;
     constructor(){
         this.listeEmplois = [
             {
@@ -31,6 +31,11 @@ class EmploiService {
 
     getEmplois(){
         return this.listeEmplois ;
+    }
+
+    searchEmplois(keyword:string){
+        keyword = keyword.toLowerCase() ;
+        return this.listeEmplois.filter((x:any) => x.titre.toLowerCase().includes(keyword) || x.description.toLowerCase().includes(keyword)) ;
     }
 }
 

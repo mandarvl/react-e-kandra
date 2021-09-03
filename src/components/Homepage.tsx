@@ -1,5 +1,6 @@
-import { Box, Button, Checkbox, FormControlLabel, Paper, Grid, makeStyles, TextField } from "@material-ui/core";
-import React from "react";
+import { Box, Button, Checkbox, FormControlLabel, Paper, Grid, makeStyles, TextField, RootRef } from "@material-ui/core";
+import React from "react" ;
+import { withRouter } from "react-router-dom";
 import coverImg from '../assets/images/cover-home.jpg' ;
 
 const useStyles = makeStyles(() => ({
@@ -23,8 +24,16 @@ const useStyles = makeStyles(() => ({
     }
 })) ;
 
-export default function Homepage() {
+function Homepage(props:any) {
     const { mainContainer, searchBox,searchForm } = useStyles() ;
+    const inputRef = React.createRef() ;
+    const performSearch = () => {
+        console.log(inputRef.current) ;
+        if(inputRef == null)
+            return ;
+        props.history.push("/search/"+(inputRef.current as HTMLInputElement).value) ;
+    }
+
     return (
         <div>
             <Grid 
@@ -37,7 +46,7 @@ export default function Homepage() {
                 <Paper className={searchBox}>
                     <Box p={10}>
                         <h3>Rechercher un emploi</h3>
-                        <form className={searchForm }>
+                        <form onSubmit={performSearch} className={searchForm }>
                             <div>
                                 <FormControlLabel control={<Checkbox name="checkedCDI" />} label="CDI" />
                                 <FormControlLabel control={<Checkbox name="checkedCDD" />} label="CDD" />
@@ -54,11 +63,8 @@ export default function Homepage() {
                                 <Grid item xs>
                                     <TextField label="Quel emploi recherchez-vous?" variant="filled" />
                                 </Grid>
-                                <Grid item xs>
-                                    <TextField label="Où?" variant="filled" />
-                                </Grid>
                                 <Grid item xs={2}>
-                                    <Button variant="contained" color="secondary">
+                                    <Button onClick={performSearch} variant="contained" color="secondary">
                                         Rechercher
                                     </Button>
                                 </Grid>
@@ -70,3 +76,5 @@ export default function Homepage() {
         </div>
     ) ;
 }
+
+export default withRouter(Homepage) ;

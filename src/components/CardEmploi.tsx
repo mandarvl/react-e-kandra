@@ -21,7 +21,7 @@ export default function CardEmploi(props:{emploi:any}){
         <CardActionArea>
             <CardMedia
             className={classes.media}
-            image={props.emploi.image}
+            image={process.env.PUBLIC_URL+"/"+props.emploi.image}
             title={props.emploi.titre}
             />
             <CardContent>

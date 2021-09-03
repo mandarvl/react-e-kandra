@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom' ;
 import Homepage from './components/Homepage';
 import { createTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import Emploi from './components/Emploi';
+import Search from './components/Search';
 
 const theme = createTheme({
   palette: {
@@ -25,6 +26,7 @@ function App() {
           <Switch>
             <Route path="/" exact={true}><Homepage /></Route>
             <Route path="/emploi"><Emploi /></Route>
+            <Route path="/search/:keyword"><Search /></Route>
           </Switch>
         </Router>
       </div>
