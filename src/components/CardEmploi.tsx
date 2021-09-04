@@ -16,6 +16,12 @@ const useStyles = makeStyles({
 
 export default function CardEmploi(props:{emploi:any}){
     const classes = useStyles() ;
+    let description = props.emploi.description ;
+    const max = 100 ;
+    
+    if(description.length > max){
+        description = description.substring(0, max).trimEnd().concat("...") ;
+    }
     return (
     <Card className={classes.root} variant="outlined">
         <CardActionArea>
@@ -32,7 +38,7 @@ export default function CardEmploi(props:{emploi:any}){
                     <WorkIcon className={classes.smallIcon} /> {props.emploi.entreprise}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                {props.emploi.description}
+                {description}
                 </Typography>
             </CardContent>
         </CardActionArea>
