@@ -1,33 +1,24 @@
-import { makeStyles, Container, Grid } from "@material-ui/core";
-import CardEmploi from "./CardEmploi";
+import { makeStyles, Box, Typography } from "@material-ui/core";
 import EmploiService from "../services/emploi-service";
+import ListEmploiDisplay from "./ListEmploiDisplay";
 
 const emploiService = new EmploiService() ;
 
 const useStyles = makeStyles({
     root: {
-        width: "90%",
-        marginTop: "20px"
+        width: "90%"
     }
 });
 
 export default function Emploi() {
     const classes = useStyles() ;
     return (
-    <Container className={classes.root}>
-        <Grid
-            container
-            spacing={3}
-            alignItems="stretch"
-        >
-            {
-                emploiService.getEmplois().map((item:any) => 
-                    <Grid item xs={6} key={item.id}>
-                        <CardEmploi emploi={item} />
-                    </Grid>
-                )
-            }
-        </Grid>
-    </Container>
+    <Box my={3} mx="auto" className={classes.root}>
+        <Box my={3}>
+            <Typography variant="h5" component="h1">Emplois </Typography>
+            <Typography variant="body1">De nombreux entreprises recherchent un employé comme vous. Choisissez une offre et obtenez votre job de rêves!</Typography>
+        </Box>
+        <ListEmploiDisplay lists={emploiService.getEmplois()} />
+    </Box>
     ) ;
 }

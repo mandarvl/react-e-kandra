@@ -5,6 +5,7 @@ import Homepage from './components/Homepage';
 import { createTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import Emploi from './components/Emploi';
 import Search from './components/Search';
+import Footer from './components/Footer';
 
 const theme = createTheme({
   palette: {
@@ -23,11 +24,14 @@ function App() {
       <div className="App">
         <Router>
           <Header/>
-          <Switch>
-            <Route path="/" exact={true}><Homepage /></Route>
-            <Route path="/emploi"><Emploi /></Route>
-            <Route path="/search/:keyword"><Search /></Route>
-          </Switch>
+          <div id="main-content">
+            <Switch>
+              <Route path="/" exact={true}><Homepage /></Route>
+              <Route path="/emploi"><Emploi /></Route>
+              <Route path="/search/:keyword"><Search /></Route>
+            </Switch>
+          </div>
+          <Footer/>
         </Router>
       </div>
     </MuiThemeProvider>

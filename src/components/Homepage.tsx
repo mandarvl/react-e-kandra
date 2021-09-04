@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, FormControlLabel, Paper, Grid, makeStyles, TextField, RootRef } from "@material-ui/core";
+import { Box, Button, Checkbox, FormControlLabel, Paper, Grid, makeStyles, TextField } from "@material-ui/core";
 import React from "react" ;
 import { withRouter } from "react-router-dom";
 import coverImg from '../assets/images/cover-home.jpg' ;
@@ -26,12 +26,12 @@ const useStyles = makeStyles(() => ({
 
 function Homepage(props:any) {
     const { mainContainer, searchBox,searchForm } = useStyles() ;
-    const inputRef = React.createRef() ;
+    const emploiRef = React.createRef() ;
     const performSearch = () => {
-        console.log(inputRef.current) ;
-        if(inputRef == null)
+        console.log(emploiRef.current) ;
+        if(emploiRef == null)
             return ;
-        props.history.push("/search/"+(inputRef.current as HTMLInputElement).value) ;
+        props.history.push("/search/"+(emploiRef.current as HTMLInputElement).value) ;
     }
 
     return (
@@ -61,7 +61,7 @@ function Homepage(props:any) {
                                 style={{marginTop: "10px"}}
                             >
                                 <Grid item xs>
-                                    <TextField label="Quel emploi recherchez-vous?" variant="filled" />
+                                    <TextField inputRef={emploiRef} label="Quel emploi recherchez-vous?" variant="filled" />
                                 </Grid>
                                 <Grid item xs={2}>
                                     <Button onClick={performSearch} variant="contained" color="secondary">

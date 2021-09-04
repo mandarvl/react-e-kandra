@@ -1,0 +1,12 @@
+.App{
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer{
+    flex-grow: 0;
+}
+
+#main-content{
+    flex-grow: 1;
+}

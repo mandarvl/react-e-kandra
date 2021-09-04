@@ -1,5 +1,5 @@
-import { makeStyles, Container, Grid } from "@material-ui/core";
-import CardEmploi from "./CardEmploi";
+import { makeStyles, Typography, Box } from "@material-ui/core";
+import ListEmploiDisplay from "./ListEmploiDisplay";
 import EmploiService from "../services/emploi-service";
 import { withRouter } from "react-router-dom" ;
 
@@ -8,30 +8,22 @@ const emploiService = new EmploiService() ;
 const useStyles = makeStyles({
     root: {
         width: "90%",
-        marginTop: "20px"
     }
 });
 
 function Search(props:{match?: any}){
     const classes = useStyles() ;
     const keyword = props.match.params.keyword.toString() ;
-
+    const results = emploiService.searchEmplois(keyword) ;
+    const testPluriel = results.length > 1 ? "s":"" ;
     return (
-    <Container className={classes.root}>
-        <Grid
-            container
-            spacing={3}
-            alignItems="stretch"
-        >
-            {
-                emploiService.searchEmplois(keyword).map((item:any) => 
-                    <Grid item xs={6} key={item.id}>
-                        <CardEmploi emploi={item} />
-                    </Grid>
-                )
-            }
-        </Grid>
-    </Container>
+    <Box my={3} mx="auto" className={classes.root}>
+        <Box my={3}>
+            <Typography variant="h5" component="h1">Résultats de votre recherche : </Typography>
+            <Typography variant="body1"><b>{ results.length }</b> emploi{testPluriel} correspondant à <b>{ keyword }</b> trouvé{testPluriel} pour vous.</Typography>
+        </Box>
+        <ListEmploiDisplay lists={results} />
+    </Box>
     ) ;
 }
 

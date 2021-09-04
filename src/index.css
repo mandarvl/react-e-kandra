@@ -29,3 +29,11 @@ a{
 header a{
   color: #fff ;
 }
+
+html, body, .App, #root{
+  height: 100% ;
+}
+
+.App{
+  position: relative;
+}

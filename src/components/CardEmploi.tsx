@@ -25,7 +25,7 @@ export default function CardEmploi(props:{emploi:any}){
             title={props.emploi.titre}
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography gutterBottom variant="h6" component="h2">
                 {props.emploi.titre}
                 </Typography>
                 <Typography gutterBottom variant="subtitle2" component="h3">
