@@ -20,7 +20,7 @@ function Search(props:{match?: any}){
     <Box my={3} mx="auto" className={classes.root}>
         <Box my={3}>
             <Typography variant="h5" component="h1">Résultats de votre recherche : </Typography>
-            <Typography variant="body1"><b>{ results.length }</b> emploi{testPluriel} correspondant à <b>{ keyword }</b> trouvé{testPluriel} pour vous.</Typography>
+            <Typography variant="body1"><b>{ results.length }</b> offre{testPluriel} correspondant à <b>{ keyword }</b> trouvée{testPluriel} pour vous.</Typography>
         </Box>
         <ListEmploiDisplay lists={results} />
     </Box>

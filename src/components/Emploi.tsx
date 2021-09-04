@@ -15,7 +15,7 @@ export default function Emploi() {
     return (
     <Box my={3} mx="auto" className={classes.root}>
         <Box my={3}>
-            <Typography variant="h5" component="h1">Emplois </Typography>
+            <Typography variant="h5" component="h1">Offres d'emplois </Typography>
             <Typography variant="body1">De nombreux entreprises recherchent un employé comme vous. Choisissez une offre et obtenez votre job de rêves!</Typography>
         </Box>
         <ListEmploiDisplay lists={emploiService.getEmplois()} />
